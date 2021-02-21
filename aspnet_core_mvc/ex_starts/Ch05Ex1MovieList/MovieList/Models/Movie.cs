@@ -8,6 +8,7 @@ namespace MovieList.Models
         // EF will instruct the database to automatically generate this value
         public int MovieId { get; set; }
 
+        [Required(ErrorMessage = "Please enter a name.")]
         public string Name { get; set; }
 
         [Required(ErrorMessage = "Please enter a year.")]
