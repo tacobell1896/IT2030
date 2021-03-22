@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<a asp-controller="Trip" asp-action="Add">Add New Trip</a>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr><th>Destination</th><th>Start Date</th><th>End Date</th><th>Accomodations</th><th>Things to Do</th></tr>
+    </thead>
+    <tbody>
+        <!--@foreach (var trip in Model)
+    { -->
+        <tr>
+            <td>@trip.Destination</td>
+            <td>@trip.Accomodations</td>
+            <td>@trip.StartDate</td>
+            <td>@trip.EndDate</td>
+            <td>
+                <a asp-controller="Trip" asp-action="Edit"
+                   asp-route-id="@trip.TripId"
+                   asp-route-slug="@trip.Slug">Edit</a>
+                <a asp-controller="Trip" asp-action="Delete"
+                   asp-route-id="@trip.TripId"
+                   asp-route-slug="@trip.Slug">Delete</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
