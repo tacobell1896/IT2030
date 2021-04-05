@@ -1,0 +1,57 @@
+﻿@model PriceQuoteModel
+@{
+    ViewData["Title"] = "Price Quotation";
+}
+
+<div class="text-left"> 
+    <div class="row">
+        <h2>@ViewData["Title"]</h2>
+    </div>
+    <form asp-action="Index" method="post" class="form-horizontal">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="row">
+            <div class="column">
+                <label asp-for="Subtotal">Subtotal:</label>
+            </div>
+            <div class="column">
+                <input asp-for="Subtotal" />
+            </div>
+            <span asp-validation-for="Subtotal" class="text-danger"></span>
+        </div>
+        <div class="row">
+            <div class="column">
+                <label asp-for="DiscountRate">Discount Percent:</label>
+            </div>
+            <div class="column">
+                <input asp-for="DiscountRate" />
+            </div>
+            <span asp-validation-for="DiscountRate" class="text-danger"></span>
+
+        </div>
+        <div class="row">
+            <div class="column">
+                <label>Discount Amount:</label>
+            </div>
+            <div class="column">
+                <label>@ViewBag.amount</label>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="column">
+                <label>Total:</label>
+            </div>
+            <div class="column">
+                <label>@ViewBag.total</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="column">
+                <button type="submit">Calculate</button>
+            </div>
+            <div class="column">
+                <a asp-action="Index">Clear</a>
+            </div>
+        </div>
+    </form>
+</div>
