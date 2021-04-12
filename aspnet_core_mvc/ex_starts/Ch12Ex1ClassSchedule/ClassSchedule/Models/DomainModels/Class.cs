@@ -21,6 +21,7 @@ namespace ClassSchedule.Models
         public string MilitaryTime { get; set; }
 
         public int TeacherId { get; set; }                  // Foreign key property
+
         public Teacher Teacher { get; set; }                // Navigation property
 
         public int DayId { get; set; }                      // Foreign key property

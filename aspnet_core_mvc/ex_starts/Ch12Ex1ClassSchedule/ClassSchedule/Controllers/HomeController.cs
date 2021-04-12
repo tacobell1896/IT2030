@@ -5,13 +5,9 @@ namespace ClassSchedule.Controllers
 {
     public class HomeController : Controller
     {
-        private Repository<Class> classes { get; set; }
-        private Repository<Day> days { get; set; }
+        private ClassScheduleUnitOfWork data { get; set; }
 
-        public HomeController(ClassScheduleContext ctx) {
-            classes = new Repository<Class>(ctx);
-            days = new Repository<Day>(ctx);
-        }
+        public HomeController(ClassScheduleContext ctx) => data = new ClassScheduleUnitOfWork(ctx);
 
         public ViewResult Index(int id)
         {
@@ -27,6 +23,7 @@ namespace ClassSchedule.Controllers
             // order by Day if no filter. Otherwise, filter by day and order by time.
             if (id == 0) {
                 classOptions.OrderBy = c => c.DayId;
+                classOptions.ThenOrderBy = c => c.MilitaryTime;
             }
             else {
                 classOptions.Where = c => c.DayId == id;
@@ -34,8 +31,8 @@ namespace ClassSchedule.Controllers
             }
 
             // execute queries
-            ViewBag.Days = days.List(dayOptions);
-            return View(classes.List(classOptions));
+            ViewBag.Days = data.Days.List(dayOptions);
+            return View(data.Classes.List(classOptions));
         }
     }
 }
