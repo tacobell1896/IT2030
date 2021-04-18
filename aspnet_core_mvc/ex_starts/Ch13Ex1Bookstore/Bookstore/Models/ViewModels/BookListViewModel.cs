@@ -17,5 +17,9 @@ namespace Bookstore.Models
                 { "7to14", "$7 to $14" },
                 { "over14", "Over $14" }
             };
+        public int[] PageSizes => new int[]
+        {
+            1,2,3,4,5,6,7,8,9,10
+        };
     }
 }

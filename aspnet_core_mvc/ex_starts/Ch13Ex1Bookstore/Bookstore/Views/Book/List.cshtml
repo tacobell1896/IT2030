@@ -11,34 +11,46 @@
 <h1>Book Catalog</h1>
 
 @* filter form *@
-<form asp-action="Filter" method="post" class="form-inline">
-    <label>Author: </label>
-    <select name="filter" class="form-control m-2"
-            asp-items="@(new SelectList(
+<div class="row">
+    <div class="col-9">
+        <form asp-action="Filter" method="post" class="form-inline">
+            <label>Author: </label>
+            <select name="filter" class="form-control m-2"
+                    asp-items="@(new SelectList(
             Model.Authors, "AuthorId", "FullName", current.AuthorFilter))">
-        <option value="@BooksGridDTO.DefaultFilter">All</option>
-    </select>
+                <option value="@BooksGridDTO.DefaultFilter">All</option>
+            </select>
 
-    <label>Genre: </label>
-    <select name="filter" class="form-control m-2"
-            asp-items="@(new SelectList(
+            <label>Genre: </label>
+            <select name="filter" class="form-control m-2"
+                    asp-items="@(new SelectList(
             Model.Genres, "GenreId", "Name", current.GenreFilter))">
-        <option value="@BooksGridDTO.DefaultFilter">All</option>
-    </select>
+                <option value="@BooksGridDTO.DefaultFilter">All</option>
+            </select>
 
-    <label>Price: </label>
-    <select name="filter" class="form-control m-2"
-            asp-items="@(new SelectList(
+            <label>Price: </label>
+            <select name="filter" class="form-control m-2"
+                    asp-items="@(new SelectList(
             Model.Prices, "Key", "Value", current.PriceFilter))">
-        <option value="@BooksGridDTO.DefaultFilter">All</option>
-    </select>
+                <option value="@BooksGridDTO.DefaultFilter">All</option>
+            </select>
 
-    <button type="submit" class="btn btn-primary mr-2">Filter</button>
-    <button type="submit" class="btn btn-primary"
-            name="clear" value="true">
-        Clear
-    </button>
-</form>
+            <button type="submit" class="btn btn-primary mr-2">Filter</button>
+            <button type="submit" class="btn btn-primary"
+                    name="clear" value="true">
+                Clear
+            </button>
+        </form>
+    </div>
+    <div class="col-9">
+        <form asp-action="PageSize" method="post">
+            <label>Page Size: </label>
+            <select name="pagesize" asp-items="@(new SelectList(Model.PageSizes, current.PageSize))"></select>
+            <button type="submit" class="btn btn-primary mr-2">Save</button>
+        </form>
+    </div>
+</div>
+
 
 @* add to cart form *@
 <form asp-action="Add" asp-controller="Cart" method="post">

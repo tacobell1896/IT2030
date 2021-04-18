@@ -76,5 +76,16 @@ namespace Bookstore.Controllers
             builder.SaveRouteSegments();
             return RedirectToAction("List", builder.CurrentRoute);
         }
+
+        [HttpPost]
+        public RedirectToActionResult PageSize(int pagesize)
+        {
+            var builder = new BooksGridBuilder(HttpContext.Session);
+
+            builder.CurrentRoute.PageSize = pagesize;
+            builder.SaveRouteSegments();
+
+            return RedirectToAction("List", builder.CurrentRoute);
+        }
     }   
 }
