@@ -4,53 +4,39 @@
 }
 
 <div class="text-left"> 
-    <div class="row">
-        <h2>@ViewData["Title"]</h2>
+    <div class="jumbotron bg-success">
+        <h1 class="text-white text-center"><i class="fas fa-money-bill-alt"></i>@ViewData["Title"]</h1>
     </div>
     <form asp-action="Index" method="post" class="form-horizontal">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <div class="row">
-            <div class="column">
-                <label asp-for="Subtotal">Subtotal:</label>
-            </div>
-            <div class="column">
+        <div class="row form-group">
+
+            <label asp-for="Subtotal" class="col col-sm-3 col-xs-12">Subtotal:</label>
+            <div class="col col-sm-9 col-xs-12">
                 <input asp-for="Subtotal" />
             </div>
-            <span asp-validation-for="Subtotal" class="text-danger"></span>
+            <span asp-validation-for="Subtotal" class="col col-sm-3 col-xs-12 text-danger"></span>
+            
         </div>
-        <div class="row">
-            <div class="column">
-                <label asp-for="DiscountRate">Discount Percent:</label>
-            </div>
-            <div class="column">
+        <div class="row form-group">
+                <label asp-for="DiscountRate" class="col col-sm-3 col-xs-12">Discount Percent:</label>
+            <div class="col col-sm-9 col-xs-12">
                 <input asp-for="DiscountRate" />
             </div>
-            <span asp-validation-for="DiscountRate" class="text-danger"></span>
+                <span asp-validation-for="DiscountRate" class="col col-sm-3 col-xs-12 text-danger"></span>
+        </div>
+        <div class="row form-group">
+                <label class="col col-sm-3 col-xs-12">Discount Amount:</label>
+                <label class="col col-sm-3 col-xs-12">@ViewBag.amount</label>
 
         </div>
-        <div class="row">
-            <div class="column">
-                <label>Discount Amount:</label>
-            </div>
-            <div class="column">
-                <label>@ViewBag.amount</label>
-            </div>
-
+        <div class="row form-group">
+                <label class="col col-sm-3 col-xs-12">Total:</label>
+                <label class="col col-sm-3 col-xs-12">@ViewBag.total</label>
         </div>
-        <div class="row">
-            <div class="column">
-                <label>Total:</label>
-            </div>
-            <div class="column">
-                <label>@ViewBag.total</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="column">
-                <button type="submit">Calculate</button>
-            </div>
-            <div class="column">
-                <a asp-action="Index">Clear</a>
+        <div class="row form-group">
+            <div class="col col-sm-3 col-xs-12">
+                <button type="submit" class="btn btn-success text-white">Calculate</button>
+                <a asp-action="Index" class="btn btn-success text-white">Clear</a>
             </div>
         </div>
     </form>
